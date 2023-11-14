@@ -208,8 +208,13 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  const arrNumbers = new Array(n).fill(1).map((num, index) => num + index);
+  const arrFilter = arrNumbers.filter((num) => n % num === 0);
+  if (arrFilter.length === 2 && n !== 1) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -227,8 +232,14 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  let result;
+  if (Number(value)) {
+    result = Number(value);
+  } else {
+    result = def;
+  }
+  return result;
 }
 
 /**
@@ -242,8 +253,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -274,8 +285,11 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  return new Array(n)
+    .fill(1)
+    .map((num, index) => num + index)
+    .reduce((acc, currentValue) => acc + currentValue);
 }
 
 /**
@@ -289,8 +303,12 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  return num
+    .toString()
+    .split('')
+    .map(Number)
+    .reduce((acc, currentValue) => acc + currentValue);
 }
 
 /**
@@ -304,8 +322,8 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -318,8 +336,8 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
